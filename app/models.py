@@ -52,9 +52,12 @@ class Product(models.Model):
     price = models.IntegerField(null=True,blank=True,verbose_name="Product price")
     discount = models.IntegerField(null=True,blank=True,verbose_name="Product discount")
     @property
-    def picture(self):
-        print(self.image.url)
-        return format_html('<img src="{}" width="50" height="50" style="border-radius:50%" />'.format(self.image.url))
+    def pic(self):
+        if self.image:
+            return format_html('<img src="{}" width="50" height="50" style="border-radius:50%" />'.format(self.image.url))
+        else:
+            return format_html('<img src="{}" width="50" height="50" style="border-radius:50%" />'.format('https://img.freepik.com/premium-photo/graduation-student-standing-with-diploma_255667-15599.jpg'))
+
     def __str__(self):
         return self.name
     class Meta:

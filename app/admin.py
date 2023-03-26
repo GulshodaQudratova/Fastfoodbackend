@@ -28,7 +28,7 @@ class SubCategoryAdmin(ExportActionModelAdmin,TranslationAdmin):
     list_per_page = 10 
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin,TranslationAdmin):
-    list_display=['name','category__name','subcategory__name']
+    list_display=['pic','name','category','subcategory']
     list_filter = ['discount','category__name','subcategory__name']
     list_per_page = 10 
     resource_classes = [ProductResource]
